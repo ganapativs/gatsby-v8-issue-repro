@@ -8,7 +8,7 @@ Getting various issues(related to `V8 serialize` etc) when trying to build large
 
 ## Tools
 
-- `node 10.6.0` (scenarios are tested on latest node also)
+- `node 10.6.0` (scenarios are tested on latest node also, both on MacOS and Ubuntu 16.04)
 - `yarn 1.7.0`
 
 ## Custom ENV's - only for demo
@@ -127,7 +127,7 @@ Getting various issues(related to `V8 serialize` etc) when trying to build large
 
 ## Notes
 
-- Surprisingly builds 200k(4.5kb each post) posts successfully on old gatsby version(`2.3.19`)+remark+28GB RAM. Throws a redux persisting state warning, but everything works
+- Surprisingly builds 200k(4.5kb each post) posts successfully on old gatsby version(`2.3.19`)+remark+28GB RAM. shows a redux persisting state warning, but everything works
 
     **Warning point:** [Code reference](https://github.com/gatsbyjs/gatsby/blob/c043816915c0e4b632730091c1d14df08d6249d4/packages/gatsby/src/redux/persist.js#L37) - uses `JSON.stringify` instead of `v8.serialize`
 
