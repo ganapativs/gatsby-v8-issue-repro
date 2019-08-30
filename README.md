@@ -1,4 +1,4 @@
-# gatsby-v8-issue-repro
+# [gatsby-v8-issue-repro](https://github.com/gatsbyjs/gatsby/issues/17233)
 
 Getting various issues(related to `V8 serialize` etc) when trying to build large number of pages(80k+ docs of 10kb each) with latest gatsby+remark resulting in the build failure.
 
