@@ -1,6 +1,6 @@
 # [gatsby-v8-issue-repro](https://github.com/gatsbyjs/gatsby/issues/17233)
 
-Getting various issues(related to `V8 serialize` etc) when trying to build large number of pages(80k+ docs of 10kb each) with latest gatsby+remark resulting in the build failure.
+Facing various issues(related to `V8 serialize` etc) when trying to build a large number of pages(80k+ docs of 10kb each) with latest gatsby+remark resulting in the build failure.
 
 ## Prerequisites
 
@@ -8,12 +8,13 @@ Getting various issues(related to `V8 serialize` etc) when trying to build large
 
 ## Tools
 
-- `node 10.6.0` (scenarios are tested on latest node also, both on MacOS and Ubuntu 16.04)
+- `node 13.0.1` (scenarios are tested on node `10.6.0` also, both on MacOS and Ubuntu 16.04)
 - `yarn 1.7.0`
+- `gatsby 2.17.7`
 
 ## Custom ENV's - only for demo
 
-- `SKIP_PAGE_BUILD` is used to skip page generations for faster builds
+- `SKIP_PAGE_BUILD` is used to skip page generations for faster build
 - `DISABLE_REMARK` env is used to skip remark transformer. This should nearly double up the successful page generation. Eg: if gatsby+remark generates 40k pages successfully, gatsby without remark generates around 70k pages successfully on 12GB RAM
 
 ## Failure scenarios
@@ -145,5 +146,5 @@ Getting various issues(related to `V8 serialize` etc) when trying to build large
 - There is no way to disable the cache in build altogether. This would have solved the scalability issue for now. At least [`DANGEROUSLY_DISABLE_OOM`](https://github.com/gatsbyjs/gatsby/pull/14767) would have helped 😅
 - Mostly uses single CPU core except when generating html/js - known issue in Gatsby repo
 - Incremental build is badly needed for pages of this scale :(
-- Slow page queries(21.56 queries/second (82669 pages)), probably IO issue? [materialization PR](https://github.com/gatsbyjs/gatsby/pull/16091) might help?
+- Slow page queries(21.56 queries/second (82669 pages)), probably IO issue? [materialization PR](https://github.com/gatsbyjs/gatsby/pull/16091) might help? (**Update:** This PR was merged recently, It did help speed up page generation a bit. but, it's not significant for build of this scale 😕)
 - End goal is to scale the gatsby build for **500k+ pages** with latest gatsby+remark 😅
