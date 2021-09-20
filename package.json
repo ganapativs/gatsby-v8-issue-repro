@@ -12,7 +12,7 @@
     "gatsby-remark-sub-sup": "1.0.0",
     "gatsby-source-mongodb": "2.1.20",
     "gatsby-transformer-remark": "2.6.32",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
